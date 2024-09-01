@@ -1,6 +1,7 @@
 package mg.herimanjaka.employeemanagement.service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,6 +36,12 @@ public class EmployeeService {
     public List<Employee> getEmployeeByDepartment(String department) {
         return this.employees.stream()
                 .filter(employee -> employee.getDepartment().equalsIgnoreCase(department))
+                .collect(Collectors.toList());
+    }
+
+    public List<Employee> sortBy(Comparator<Employee> comp) {
+        return this.employees.stream()
+                .sorted(comp)
                 .collect(Collectors.toList());
     }
 }
