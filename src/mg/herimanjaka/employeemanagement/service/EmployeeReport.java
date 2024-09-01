@@ -36,6 +36,19 @@ public class EmployeeReport {
     }
 
     /**
+     * Counts the number of employees in the specified department.
+     *
+     * @param employees  the list of employees to process
+     * @param department the department name to filter by
+     * @return the number of employees in the specified department
+     */
+    public static long countEmployeesByDepartment(List<Employee> employees, String department) {
+        return employees.stream()
+                .filter(e -> e.getDepartment().equalsIgnoreCase(department))
+                .count();
+    }
+
+    /**
      * Calculates the total salary of all employees in the given list.
      *
      * @param employees the list of employees to process
